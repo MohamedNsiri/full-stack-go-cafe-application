@@ -1,0 +1,153 @@
+<!--
+  This example requires some changes to your config:
+  
+  ```
+  // tailwind.config.js
+  module.exports = {
+    // ...
+    plugins: [
+      // ...
+      require('@tailwindcss/forms'),
+    ],
+  }
+  ```
+-->
+<!--
+  This example requires updating your template:
+
+  ```
+  <html class="h-full bg-white">
+  <body class="h-full">
+  ```
+-->
+<div class="bg-zinc-900 flex h-screen overflow-hidden">
+  <div class="flex flex-1 flex-col justify-center px-4 py-12 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
+    <div class="mx-auto w-full max-w-sm lg:w-96">
+      <div class="animate-slideRight0">
+        <img routerLink="/" class="cursor-pointer h-16 w-auto" src="assets/images/logo.png" alt="Your Company">
+        <h2 class="lg:mt-4 text-2xl font-bold leading-9 tracking-tight text-gocolor font-opensans">Create account</h2>
+        <p class=" text-sm leading-6 text-gray-500">
+          Already a member?
+          <a routerLink="/sign_in" class="font-semibold text-gocolor hover:text-darker duration-200">Sign In</a>
+        </p>
+      </div>
+
+      <div class="mt-10">
+        <div>
+          <form [formGroup]="form" (ngSubmit)="onSubmit(this.form.value)" method="post" class="space-y-6">
+            <div class="animate-slideRight1">
+              <label for="email" class="block text-sm font-medium leading-6 text-gray-300">
+                Email address
+              </label>
+              <div class="mt-2">
+                <input
+                  placeholder="Enter Email"
+                  id="email"
+                  type="email"
+                  formControlName="email"
+                  class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-darker sm:text-sm sm:leading-6"
+                />
+                <div *ngIf="form.get('email')?.invalid && form.get('email')?.touched" class="text-red-500 text-sm absolute lg:relative">
+                  Invalid email address.
+                </div>
+              </div>
+            </div>
+          
+            <div class="animate-slideRight2">
+              <label for="username" class="block text-sm font-medium leading-6 text-gray-300">
+                Username
+              </label>
+              <div class="mt-2">
+                <input
+                  placeholder="Enter Your Name"
+                  id="name"
+                  type="text"
+                  formControlName="name"
+                  class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-darker sm:text-sm sm:leading-6"
+                />
+                <div *ngIf="form.get('name')?.invalid && form.get('name')?.touched" class="text-red-500 text-sm absolute lg:relative">
+                  Username is required.
+                </div>
+              </div>
+            </div>
+          
+            <div class="animate-slideRight3">
+              <label for="password" class="block text-sm font-medium leading-6 text-gray-300">Password</label>
+              <div class="mt-2">
+                <input
+                  placeholder="Enter Password"
+                  id="password"
+                  [type]="passwordFieldType"
+                  formControlName="password"
+                  class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-darker sm:text-sm sm:leading-6"
+                />
+                <div [ngClass]="{'lg:-translate-y-2': form.get('password')?.invalid && form.get('password')?.touched}" class="absolute inset-y-0 right-0 pr-3 pt-8 flex items-center cursor-pointer" (click)="togglePasswordVisibility()">
+                  <svg *ngIf="passwordFieldType === 'password'" fill="gray" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19.604 2.562l-3.346 3.137c-1.27-.428-2.686-.699-4.243-.699-7.569 0-12.015 6.551-12.015 6.551s1.928 2.951 5.146 5.138l-2.911 2.909 1.414 1.414 17.37-17.035-1.415-1.415zm-6.016 5.779c-3.288-1.453-6.681 1.908-5.265 5.206l-1.726 1.707c-1.814-1.16-3.225-2.65-4.06-3.66 1.493-1.648 4.817-4.594 9.478-4.594.927 0 1.796.119 2.61.315l-1.037 1.026zm-2.883 7.431l5.09-4.993c1.017 3.111-2.003 6.067-5.09 4.993zm13.295-4.221s-4.252 7.449-11.985 7.449c-1.379 0-2.662-.291-3.851-.737l1.614-1.583c.715.193 1.458.32 2.237.32 4.791 0 8.104-3.527 9.504-5.364-.729-.822-1.956-1.99-3.587-2.952l1.489-1.46c2.982 1.9 4.579 4.327 4.579 4.327z"/></svg>
+                  <svg *ngIf="passwordFieldType === 'text'" fill="gray" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12.015 7c4.751 0 8.063 3.012 9.504 4.636-1.401 1.837-4.713 5.364-9.504 5.364-4.42 0-7.93-3.536-9.478-5.407 1.493-1.647 4.817-4.593 9.478-4.593zm0-2c-7.569 0-12.015 6.551-12.015 6.551s4.835 7.449 12.015 7.449c7.733 0 11.985-7.449 11.985-7.449s-4.291-6.551-11.985-6.551zm-.015 3c-2.21 0-4 1.791-4 4s1.79 4 4 4c2.209 0 4-1.791 4-4s-1.791-4-4-4zm-.004 3.999c-.564.564-1.479.564-2.044 0s-.565-1.48 0-2.044c.564-.564 1.479-.564 2.044 0s.565 1.479 0 2.044z"/></svg>
+                </div>
+                <div *ngIf="form.get('password')?.invalid && form.get('password')?.touched" class="text-red-500 text-sm absolute lg:relative">
+                  Password must be at least 8 characters.
+                </div>
+              </div>
+            </div>
+          
+            <div class="animate-slideRight4">
+              <label for="confirmPassword" class="block text-sm font-medium leading-6 text-gray-300">Confirm Password</label>
+              <div class="mt-2">
+                <input
+                  placeholder="Confirm Password"
+                  id="confirmPassword"
+                  [type]="confirmPasswordFieldType"
+                  formControlName="confirmPassword"
+                  class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-darker sm:text-sm sm:leading-6"
+                />
+                <div [ngClass]="{'lg:-translate-y-2': form.get('password')?.value !== form.get('confirmPassword')?.value && form.get('confirmPassword')?.touched}" class="absolute inset-y-0 right-0 pr-3 pt-8 flex items-center cursor-pointer" (click)="toggleConfirmPasswordVisibility()">
+                  <svg *ngIf="confirmPasswordFieldType === 'password'" fill="gray" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19.604 2.562l-3.346 3.137c-1.27-.428-2.686-.699-4.243-.699-7.569 0-12.015 6.551-12.015 6.551s1.928 2.951 5.146 5.138l-2.911 2.909 1.414 1.414 17.37-17.035-1.415-1.415zm-6.016 5.779c-3.288-1.453-6.681 1.908-5.265 5.206l-1.726 1.707c-1.814-1.16-3.225-2.65-4.06-3.66 1.493-1.648 4.817-4.594 9.478-4.594.927 0 1.796.119 2.61.315l-1.037 1.026zm-2.883 7.431l5.09-4.993c1.017 3.111-2.003 6.067-5.09 4.993zm13.295-4.221s-4.252 7.449-11.985 7.449c-1.379 0-2.662-.291-3.851-.737l1.614-1.583c.715.193 1.458.32 2.237.32 4.791 0 8.104-3.527 9.504-5.364-.729-.822-1.956-1.99-3.587-2.952l1.489-1.46c2.982 1.9 4.579 4.327 4.579 4.327z"/></svg>
+                  <svg *ngIf="confirmPasswordFieldType === 'text'" fill="gray" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12.015 7c4.751 0 8.063 3.012 9.504 4.636-1.401 1.837-4.713 5.364-9.504 5.364-4.42 0-7.93-3.536-9.478-5.407 1.493-1.647 4.817-4.593 9.478-4.593zm0-2c-7.569 0-12.015 6.551-12.015 6.551s4.835 7.449 12.015 7.449c7.733 0 11.985-7.449 11.985-7.449s-4.291-6.551-11.985-6.551zm-.015 3c-2.21 0-4 1.791-4 4s1.79 4 4 4c2.209 0 4-1.791 4-4s-1.791-4-4-4zm-.004 3.999c-.564.564-1.479.564-2.044 0s-.565-1.48 0-2.044c.564-.564 1.479-.564 2.044 0s.565 1.479 0 2.044z"/></svg>
+                </div>
+                <div *ngIf="form.get('password')?.value !== form.get('confirmPassword')?.value && form.get('confirmPassword')?.touched" class="text-red-500 text-sm absolute lg:relative">
+                  Password must match.
+                </div>
+                
+              </div>
+            </div>
+          
+            <div class="animate-slideRight5 flex items-center justify-between">
+              <div class="flex items-center">
+                <input
+                  id="remember-me"
+                  type="checkbox"
+                  formControlName="rememberMe"
+                  class="h-4 w-4 rounded border-gray-300 text-gocolor focus:ring-darker duration-200"
+                />
+                <label for="remember-me" class="ml-3 block text-sm leading-6 text-gray-500">Remember me</label>
+              </div>
+            </div>
+          
+            <div class="animate-slideRight6">
+              <button type="submit" class="flex w-full justify-center rounded-md text-white bg-gocolor hover:bg-darker duration-200 px-3 py-1.5 text-sm font-semibold leading-6 shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                Sign Up
+              </button>              
+            </div>
+          </form>
+          <div>
+            <div *ngIf="loading && !bo" class="absolute mt-2 translate-x-40 lg:translate-x-44 ">
+              <span class="loading loading-spinner loading-lg bg-darker"></span>
+            </div>
+            
+            <div 
+            [ngClass]="{'animate-slideUpMessage p-3 fixed lg:inset-x-auto inset-x-0 lg:w-96 w-80 mx-auto rounded-sm bottom-0 text-center text-white z-50': bo }"
+            [ngStyle]="{'background-color': this.messageColor}">
+              {{ this.message }}
+            </div>
+          </div>
+        </div>        
+      </div>      
+    </div>
+  </div>
+  
+  <div class="relative hidden w-0 flex-1 lg:block">
+    <div class="animate-opacityUp absolute inset-0 bg-black backdrop-blur-sm z-10"></div>
+    <img class="absolute inset-0 h-full w-full object-cover" src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/27/ac/d2/8f/caption.jpg?w=1200&h=-1&s=1" alt="">
+  </div>
+</div>

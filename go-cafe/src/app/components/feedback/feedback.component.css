@@ -1,0 +1,12 @@
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(180deg);
+  }
+}
+
+.rotate-on-open {
+  animation: rotate 0.5s ease-in-out forwards; /* Animation when opened */
+}

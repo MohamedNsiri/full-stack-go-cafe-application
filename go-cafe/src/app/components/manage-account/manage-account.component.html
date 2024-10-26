@@ -1,0 +1,79 @@
+<div class="relative h-screen w-screen overflow-hidden flex flex-col justify-center items-center">
+    
+    <img src="https://images.pexels.com/photos/683039/pexels-photo-683039.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="absolute inset-0 w-full h-full object-cover" alt="Background Image">
+    
+    <div class="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-sm"></div>
+
+    <div class="relative z-10 flex flex-col items-stretch justify-center gap-2 w-[500px] bg-black/70 rounded-xl p-16">
+        <div>
+            <h1 class="text-gocolor text-2xl mb-2">Settings</h1>
+            <p class="text-gray-300 mb-4">Please update your name and password to words that reflect your identity and personality.</p>
+        </div>
+
+        <div class="">
+            <form [formGroup]="NameForm" (ngSubmit)="OnSubmitName(NameForm.value)">
+                <label for="name" class="leading-6 text-sm font-medium text-gray-300">Change Name:</label><br>
+
+                <div class="grid grid-cols-6">
+
+                <input formControlName="name" id="name" type="text" placeholder="Change Name" class="m-2 text-gray-800 focus:ring-darker col-span-5 rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset  sm:text-sm sm:leading-6">
+
+                <button 
+                [ngClass]="{
+                    'bg-orange-900 hover:bg-darker/50 hover:scale-110': !bo && !nbo,
+                    'bg-green-500 hover:bg-green-500/20 scale-110 hover:scale-110': bo && !nbo,
+                    'bg-red-800 hover:bg-red-500/20 scale-110 hover:scale-110': nbo && !bo
+                }"
+                class="text-gocolor hover:scale-110 duration-300 rounded-lg h-[38px] mt-[7px] flex justify-center items-center">
+                    <div *ngIf="bo"> <!--tick-->
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="green" width="24" height="24" viewBox="0 0 24 24">
+                            <path d="M10.041 17l-4.5-4.319 1.395-1.435 3.08 2.937 7.021-7.183 1.422 1.409-8.418 8.591z"/>
+                        </svg>
+                    </div>
+
+                    <div *ngIf="nbo"> <!--cross-->
+                        <svg fill="red" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M23 20.168l-8.185-8.187 8.185-8.174-2.832-2.807-8.182 8.179-8.176-8.179-2.81 2.81 8.186 8.196-8.186 8.184 2.81 2.81 8.203-8.192 8.18 8.192z"/></svg>
+                    </div>
+
+                    <div *ngIf="!bo && !nbo">OK</div>
+                </button>   
+
+                </div>
+            </form>
+        </div>
+
+        <div class="text-center"> 
+            <button (click)="showDisplay()"
+            [ngClass]="{'text-gocolor': changePassword, 'text-white': !changePassword}"
+            class="font-semibold underline hover:text-gocolor"            
+            > Change Password</button>
+        </div>
+
+        <div *ngIf="changePassword" class=" flex flex-col justify-center">
+
+            <form [formGroup]="PasswordForm" (ngSubmit)="OnSubmitPassword(PasswordForm.value)" class="flex flex-col justify-center items-stretch">
+
+                <label for="oldPassword" class="leading-6 text-sm font-medium text-gray-300">Old Password:</label>
+                <input formControlName="oldPassword" id="oldPassword" type="password" placeholder="Old Password"
+                [ngClass]="{'ring-2 ring-green-600': message === 'Password altered successfully', 'ring-2 ring-red-600': message === 'no'}"
+                class="m-2 duration-200 rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-darker sm:text-sm sm:leading-6">
+            
+                <label for="newPassword" class="leading-6 text-sm font-medium text-gray-300">New Password:</label>
+                <input formControlName="newPassword" id="newPassword" type="password" placeholder="New Password"
+                [ngClass]="{'ring-2 ring-green-600': message === 'Password altered successfully', 'ring-2 ring-red-600': message === 'no'}"
+                class="m-2 rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-darker sm:text-sm sm:leading-6">
+                
+                <label for="newpasswordconfirmation" class="leading-6 text-sm font-medium text-gray-300">Confirm New Password:</label>
+                <input formControlName="newpasswordconfirmation" id="newpasswordconfirmation" type="password" placeholder="Confirm New Password"
+                [ngClass]="{'ring-2 ring-green-600': message === 'Password altered successfully', 'ring-2 ring-red-600': message === 'no'}"
+                class="m-2 rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-darker sm:text-sm sm:leading-6">
+                
+                <button class="text-gocolor bg-orange-900 hover:bg-darker/50 active:bg-darker/50 hover:scale-110 duration-300  p-3 m-2 font-bold rounded-md">Confirm</button>
+            
+            </form>
+        </div>
+
+        <button (click)="openLogoutDialog()" class="text-red-600 bg-gray-900 hover:bg-red-600/10 active:bg-red-600/10 duration-300 p-3 m-2 font-bold rounded-md">Log Out</button>
+        <button (click)="openDeletionDialog()" class="text-red-600 bg-gray-900 hover:bg-red-600/10 active:bg-red-600/10 duration-300 p-3 m-2 font-bold rounded-md">Delete Account</button>
+    </div>
+</div>

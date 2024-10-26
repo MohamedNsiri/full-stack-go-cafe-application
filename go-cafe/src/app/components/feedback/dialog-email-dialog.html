@@ -1,0 +1,28 @@
+<mat-card class="w-full h-full shadow-lg p-4 bg-gray-800 rounded-lg">
+    <mat-card-header class="flex items-center space-x-4">
+      <div mat-card-avatar class="flex-shrink-0">
+        <div class="rounded-full overflow-hidden w-16 h-16">
+          <img src="assets/images/logo.png" alt="User Avatar" class="object-cover w-full h-full">
+        </div>
+      </div>
+
+      <div class="flex-grow">
+        <mat-card-title class="text-white overflow-hidden whitespace-nowrap text-ellipsis w-80"> <span class="font-light text-sm">Send to <span class="text-gocolor">{{email}}</span></span> </mat-card-title>
+        <mat-card-subtitle class="text-gray-400"></mat-card-subtitle>
+      </div>
+    </mat-card-header>
+
+    <mat-card-content class="mt-4">
+      <p class="text-white leading-6">
+        <mat-form-field class="w-full">
+            <mat-label class="text-gocolor">Write response email..</mat-label>
+            <textarea [(ngModel)]="email_body" matInput placeholder="About Your Feedback..."></textarea>
+        </mat-form-field>
+      </p>
+    </mat-card-content>
+
+    <mat-card-actions class="mt-4">
+      <button (click)="sendEmail(email, email_body)" class="hover:bg-gocolor/30 duration-200" mat-button> <span class="text-gocolor">Send Email</span></button>
+      <button class="hover:bg-gocolor/30 duration-200" mat-button mat-dialog-close> <span class="text-gocolor">Close</span></button>
+    </mat-card-actions>
+  </mat-card>

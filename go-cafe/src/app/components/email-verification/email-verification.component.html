@@ -1,0 +1,26 @@
+<div class="flex bg-[url('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/27/ac/d2/8f/caption.jpg?w=1200&h=-1&s=1')] bg-cover bg-center justify-center items-center h-screen relative">
+    <div class="opacity-70 absolute inset-0 bg-black backdrop-blur-sm z-10"></div>
+
+    <div class="mx-10 lg:mx-0 flex flex-col justify-evenly items-center gap-2 relative z-20 p-8 w-[800px] bg-gradient-to-br from-zinc-800 to-zinc-900 rounded-xl shadow-xl text-center overflow-hidden backdrop-blur-sm">
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/asfalt-light.png')] opacity-30"></div>
+        
+        <div class="relative ">
+            <h1 class="text-xl lg:text-3xl font-opensans text-gocolor tracking-wide">Please verify your email.</h1>
+            <p class="text-white font-thin mt-3">we have sent you an email <br> please verify it.</p>
+        </div>
+        
+        <!-- Spinning div -->
+        <div *ngIf="!bo" class="relative">
+            <div class="flex justify-center items-center w-20 h-20 lg:mt-2 mt-10 border-4 border-dashed rounded-full animate-spin border-darker">
+                <h1 class="text-gocolor text-center font-thesignature text-2xl">
+                    <span class="text-gomarket">G</span>o Cafe
+                </h1>
+            </div>
+        </div>
+
+        <div *ngIf="!bo" class="relative mt-7 flex justify-center items-center z-50">
+            <button (click)="resendEmail()" class="p-3 w-32 rounded-md text-gray-900 font-bold cursor-pointer bg-gocolor">{{buttonContent}}</button> 
+        </div>
+    </div>
+</div>
+

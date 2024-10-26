@@ -1,0 +1,93 @@
+@keyframes slideInFromLeft {
+    0% {
+      transform: translateX(-50px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideInFromRight {
+    0% {
+      transform: translateX(50px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideInFromTop {
+    0% {
+      transform: translateY(-50px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideInFromBottom {
+    0% {
+      transform: translateY(50px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes changeColor {
+    0% {
+      color: black ;
+    }
+    100%{
+      color: #f5b456;
+    }
+  }
+  
+  .change-color{
+    animation: changeColor 2s ease-in-out forwards;
+  }
+  
+  .slide-left {
+    animation: slideInFromLeft 2s ease-out forwards;
+  }
+  
+  .slide-right {
+    animation: slideInFromRight 2s ease-out forwards;
+  }
+  
+  .slide-top {
+    animation: slideInFromTop 2s ease-out forwards;
+  }
+  
+  .slide-bottom {
+    animation: slideInFromBottom 2s ease-out forwards;
+  }
+
+  .gomarket {
+    background-size: 200%;
+    background-position: left;
+    transition: background-position 0.7s ease-in-out;
+  }
+  
+  .gomarket:hover {
+    background-position: right;
+  }
+  
+  .example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+  

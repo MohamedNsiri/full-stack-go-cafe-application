@@ -1,0 +1,134 @@
+<div class="flex h-screen">
+  <div [ngClass]="{
+    'w-14 opacity-0 lg:opacity-100 lg:block': !isExpanded,
+    'w-80 opacity-100 z-50': isExpanded,
+    'transition-all duration-300 ease-in-out': true,}"
+    class="fixed h-screen lg:flex grow flex-col gap-y-5 overflow-x-hidden border-r border-gray-200 bg-slate-200 px-6">
+    
+    <div class="flex justify-between h-16 items-center">
+      <img (click)="toggleSidebar()" [ngClass]="{'absolute -translate-x-4 duration-300': !isExpanded}" class="h-10 w-auto -translate-x-6" src="assets/images/logo.png" alt="Your Company">
+
+      <div (click)="toggleSidebar()" class="cursor-pointer" [ngClass]="{' hidden': !isExpanded, 'rotate-on-open': isExpanded}">
+        <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd">
+          <path d="M12 11.293l10.293-10.293.707.707-10.293 10.293 10.293 10.293-.707.707-10.293-10.293-10.293 10.293-.707-.707 10.293-10.293-10.293-10.293.707-.707 10.293 10.293z"/>
+        </svg>
+      </div>
+    </div>
+
+    <nav class="flex flex-1 flex-col">
+      <ul role="list" class="flex flex-1 flex-col gap-y-7">
+        <li>
+          <ul role="list" class="-mx-2 space-y-1">
+            <li>
+              <a (click)="toggleUsers()" class="text-gray-700 hover:text-gocolor group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold">
+                <div [ngClass]="{'-translate-x-[12px] size-18 duration-300': !isExpanded}">
+                  <svg class="h-6 w-6 shrink-0 text-gray-400 group-hover:text-gocolor" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
+                  </svg>
+                </div>
+                <span [ngClass]="{'opacity-0 transform transition-opacity duration-700': !isExpanded, 'opacity-100 transform transition-opacity duration-700': isExpanded, 'text-gocolor': toggleUser}">
+                  Users
+
+                  <ul [ngClass]="{
+                    'opacity-100 duration-200 translate-y-0 delay-100': toggleUser, 
+                    'opacity-0 duration-300 -translate-y-[100%]': !toggleUser
+                  }"  class="leading-10 mt-2 ml-4 transition-all ease-in-out">
+                    <li class="hover:text-darker">Admins</li>
+                    <li class="hover:text-darker">Clients</li>
+                  </ul>
+                  
+                </span> 
+              </a>
+            </li>
+
+            <li [ngClass]="{'-translate-y-24 duration-200': !toggleUser, 'duration-100': toggleUser}">
+              <a class="text-gray-700 hover:text-gocolor group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold">
+                <div [ngClass]="{'-translate-x-[12px] size-18 duration-300': !isExpanded}">
+                  <svg class="h-6 w-6 shrink-0 text-gray-400 group-hover:text-gocolor" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 01-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 011.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 00-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 01-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 00-3.375-3.375h-1.5a1.125 1.125 0 01-1.125-1.125v-1.5a3.375 3.375 0 00-3.375-3.375H9.75" />
+                  </svg>
+                </div>
+                <span [ngClass]="{'opacity-0 transform transition-opacity duration-700': !isExpanded, 'opacity-100 transform transition-opacity duration-700': isExpanded}">Feedbacks</span>   
+              </a>
+            </li>
+
+            <li [ngClass]="{'-translate-y-24 duration-200': !toggleUser, 'duration-100': toggleUser}">
+              <a class="text-gray-700 hover:text-gocolor group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold">
+                <div [ngClass]="{'-translate-x-[12px] size-18 duration-300': !isExpanded}">
+                  <svg class="h-6 w-6 shrink-0 text-gray-400 group-hover:text-gocolor" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6a7.5 7.5 0 107.5 7.5h-7.5V6z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 10.5H21A7.5 7.5 0 0013.5 3v7.5z" />
+                  </svg>
+                </div>
+                <span [ngClass]="{'opacity-0 transform transition-opacity duration-700': !isExpanded, 'opacity-100 transform transition-opacity duration-700': isExpanded}">
+                  User                
+                </span> 
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+<!---->
+
+  <div class="flex-1 container mx-auto px-4 h-screen overflow-auto bg-slate-500 duration-300" [ngClass]="{'lg:ml-14': !isExpanded, ' lg:ml-80': isExpanded}">
+    <div class="lg:hidden flex justify-start gap-3 ">
+      <div (click)="toggleSidebar()" class="m-4">
+        <svg height="40" fill="" clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="m12.002 2.005c5.518 0 9.998 4.48 9.998 9.997 0 5.518-4.48 9.998-9.998 9.998-5.517 0-9.997-4.48-9.997-9.998 0-5.517 4.48-9.997 9.997-9.997zm0 1.5c-4.69 0-8.497 3.807-8.497 8.497s3.807 8.498 8.497 8.498 8.498-3.808 8.498-8.498-3.808-8.497-8.498-8.497zm4.998 11.745c0-.414-.336-.75-.75-.75h-8.5c-.414 0-.75.336-.75.75s.336.75.75.75h8.5c.414 0 .75-.336.75-.75zm0-3.248c0-.414-.336-.75-.75-.75h-8.5c-.414 0-.75.336-.75.75s.336.75.75.75h8.5c.414 0 .75-.336.75-.75zm0-3.252c0-.414-.336-.75-.75-.75h-8.5c-.414 0-.75.336-.75.75s.336.75.75.75h8.5c.414 0 .75-.336.75-.75z" fill-rule="nonzero"/>
+        </svg>
+      </div>
+      <h1 class="text-4xl font-bold m-3 text-center text-gocolor mb-10">Feedback</h1>
+    </div>
+
+    <h1 class="text-4xl font-bold m-3 text-center text-gocolor mb-10 hidden lg:block">Feedback</h1>
+
+    <div *ngIf="feedbacks.length > 0 && !unauthorized">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div *ngFor="let feedback of feedbacks">
+          <mat-card
+           class="w-full shadow-lg p-4  duration-300 bg-gray-800 rounded-lg">
+            <mat-card-header class="flex items-center space-x-4">
+              <div mat-card-avatar class="flex-shrink-0">
+                <div class="rounded-full overflow-hidden w-16 h-16">
+                  <img src="assets/images/logo.png" alt="User Avatar" class="object-cover w-full h-full">
+                </div>
+              </div>
+
+              <div class="flex-grow">
+                <mat-card-title class="text-white text-lg font-semibold overflow-hidden whitespace-nowrap text-ellipsis w-60">{{feedback[1]}}</mat-card-title>
+                <mat-card-subtitle (click)="openEmail(feedback[0])" class="text-gray-400 cursor-pointer overflow-hidden whitespace-nowrap text-ellipsis w-60">{{feedback[0]}}</mat-card-subtitle>
+              </div>
+            </mat-card-header>
+
+            <div class="mt-4 flex items-center">
+              <nz-rate class="scale-90" [ngModel]="feedback[2]" nzDisabled></nz-rate>
+            </div>
+
+            <mat-card-content (click)="openFeedback(feedback[1], feedback[0], feedback[2], feedback[3], feedback[4], '300ms', '150ms')" class="mt-4 cursor-pointer">
+              <p class="text-white overflow-hidden text-ellipsis h-[68px] leading-6 line-clamp-3">
+                {{feedback[3]}}
+              </p>
+            </mat-card-content>
+
+            <mat-card-actions class="mt-4">
+              <button class="hover:bg-gocolor/30 duration-200" mat-button> <span class="text-gocolor">LIKE</span></button>
+              <button class="hover:bg-gocolor/30 duration-200" mat-button> <span class="text-gocolor">SHARE</span></button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+
+    <!-- Display message when no feedback is available -->
+    <div *ngIf="feedbacks.length === 0 && !unauthorized" class="text-center">
+      <p class="text-gray-500">No feedback available.</p>
+    </div>
+    
+    <div *ngIf="unauthorized" class="text-center">
+      <h1 class="text-red-500">Access Denied!</h1>
+    </div>
+  </div>
+</div>
