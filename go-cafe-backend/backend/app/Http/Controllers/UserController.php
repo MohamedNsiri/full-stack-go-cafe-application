@@ -104,9 +104,16 @@ class UserController extends Controller
 
 
     public function get_user()
-    {
+{
+    if (Auth::check()) {
+        // Return the authenticated user's data
         return response()->json(Auth::user());
+    } else {
+        // Return a 401 Unauthorized response when no user is signed in
+        return response()->json(['error' => 'User not authenticated'], 401);
     }
+}
+
 
 
     /**
