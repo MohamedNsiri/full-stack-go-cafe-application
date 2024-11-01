@@ -46,7 +46,7 @@ export class FrontpageComponent {
   }
 
 
-  ngOnInit(){
+  ngOnInit(){/*
     this.dataService.getUserInfo().subscribe(
       (data) => {
         this.user = this.capitalizeUserName(data)
@@ -54,7 +54,7 @@ export class FrontpageComponent {
       (error) => {
         console.log(error)
       }
-    )
+    )*/
   }
 
   capitalizeUserName(user: any) {
