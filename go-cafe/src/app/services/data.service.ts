@@ -8,7 +8,7 @@ import { isPlatformBrowser } from '@angular/common';
 })
 export class DataService {
   private platformId: Object;
-  private apiUrl: string = 'https://full-stack-go-cafe-application-production.up.railway.app:8080/api';
+  private apiUrl: string = 'https://full-stack-go-cafe-application-production.up.railway.app/api';
 
   constructor(private http: HttpClient, @Inject(PLATFORM_ID) platformId: Object) {
     this.platformId = platformId;
