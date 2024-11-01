@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'default' => env('CACHE_STORE', 'database'),
+    'default' => env('CACHE_DRIVER', 'file'),
 
     /*
     |--------------------------------------------------------------------------
@@ -52,7 +52,7 @@ return [
             'lock_path' => storage_path('framework/cache/data'),
         ],
 
-        'memcached' => [
+        /*'memcached' => [
             'driver' => 'memcached',
             'persistent_id' => env('MEMCACHED_PERSISTENT_ID'),
             'sasl' => [
@@ -71,7 +71,7 @@ return [
             ],
         ],
 
-        'redis' => [
+        /*'redis' => [
             'driver' => 'redis',
             'connection' => env('REDIS_CACHE_CONNECTION', 'cache'),
             'lock_connection' => env('REDIS_CACHE_LOCK_CONNECTION', 'default'),
@@ -84,7 +84,7 @@ return [
             'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
             'table' => env('DYNAMODB_CACHE_TABLE', 'cache'),
             'endpoint' => env('DYNAMODB_ENDPOINT'),
-        ],
+        ],*/
 
         'octane' => [
             'driver' => 'octane',
