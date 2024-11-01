@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'postmark' => [
+    /*'postmark' => [
         'token' => env('POSTMARK_TOKEN'),
     ],
 
@@ -34,10 +34,6 @@ return [
             'channel' => env('SLACK_BOT_USER_DEFAULT_CHANNEL'),
         ],
     ],
-
-    'mailgun' => [
-        'domain' => env('sandbox19dab3198a4148c3ab4bc0ca519450dc.mailgun.org'),
-        'secret' => env('a38f148c4053c284bcda098863bf2e63-826eddfb-dd8f8563'),
-    ],
+    */
 
 ];
