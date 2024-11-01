@@ -13,6 +13,11 @@
     src: url('/assets/fonts/OpenSans-VariableFont_wdth,wght.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
+
+    font-family: 'Montserrat';
+    src: url('/assets/fonts/Montserrat-Black.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
     
   }
 
