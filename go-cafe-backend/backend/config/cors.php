@@ -23,7 +23,7 @@ return [
 
     'allowed_methods' => ['*'], // Allow all HTTP methods
 
-    'allowed_origins' => ['http://localhost:4200'], // The base URL of your Angular app (omit the route)
+    'allowed_origins' => ['https://full-stack-go-cafe-application.vercel.app/'], // The base URL of your Angular app (omit the route)
 
     'allowed_origins_patterns' => [],
 
