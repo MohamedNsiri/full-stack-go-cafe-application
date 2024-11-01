@@ -68,8 +68,7 @@
                   "maximumError": "4kB"
                 }
               ],
-              "outputHashing": "all",
-              "inlineFonts": false
+              "outputHashing": "all"
             },
             "development": {
               "optimization": false,
