@@ -45,7 +45,8 @@
             "styles": [
               "src/theme.less",
               "@angular/material/prebuilt-themes/cyan-orange.css",
-              "src/styles.css"
+              "src/styles.css",
+              "src/output.css"
             ],
             "scripts": [],
             "server": "src/main.server.ts",
@@ -59,8 +60,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
+                  "maximumWarning": "1mb",
+                  "maximumError": "1.5mb"   
                 },
                 {
                   "type": "anyComponentStyle",
