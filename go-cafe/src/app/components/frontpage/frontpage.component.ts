@@ -46,15 +46,21 @@ export class FrontpageComponent {
   }
 
 
-  ngOnInit(){
+  ngOnInit() {
     this.dataService.getUserInfo().subscribe(
       (data) => {
-        this.user = this.capitalizeUserName(data)
+        this.user = this.capitalizeUserName(data);
       },
       (error) => {
-        console.log(error)
+        if (error.status === 401) {
+          console.log("User is not authenticated. Redirecting to login.");
+          this.router.navigate(['/login']);
+        } else if (error.status === 500) {
+          console.error("Server error:", error.message);
+          // Optional: Show a user-friendly message or retry option
+        }
       }
-    )
+    );
   }
 
   capitalizeUserName(user: any) {
