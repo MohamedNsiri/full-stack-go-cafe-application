@@ -131,7 +131,7 @@ export class ManageAccountComponent {
 }
 
 @Component({
-  selector: 'dialog-logout-confirmation-dialog',
+  selector: 'dialog-logout-confirmation-dialog0',
   templateUrl: 'dialog-logout-confirmation-dialog.html',
   standalone: true,
   imports: [MatDialogTitle, MatDialogContent, MatDialogActions, MatDialogClose, MatButtonModule],
@@ -148,7 +148,7 @@ export class DialogLogOutConfirmation {
 }
 
 @Component({
-  selector: 'dialog-deletion-confirmation-dialog',
+  selector: 'dialog-deletion-confirmation-dialog0',
   templateUrl: 'dialog-deletion-confirmation-dialog.html',
   standalone: true,
   imports: [MatDialogTitle, MatDialogContent, MatDialogActions, MatDialogClose, MatButtonModule],
