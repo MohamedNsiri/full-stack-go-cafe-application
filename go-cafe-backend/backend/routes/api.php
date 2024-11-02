@@ -11,8 +11,8 @@ use App\Http\Controllers\AdminController;
 
 Route::middleware(['api'])->group(function(){
 
-    Route::get('/user', [UserController::class, 'get_user']
-    )->middleware('auth:sanctum');
+    Route::middleware('auth:sanctum')->get('/user', [UserController::class, 'get_user']);
+
 
     Route::post('/create_account', [UserController::class, 'store']);
 

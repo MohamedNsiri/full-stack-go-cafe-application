@@ -60,6 +60,7 @@ export class CreateAccountComponent {
                 this.bo = true;
                 this.messageColor = 'red';
                 this.loading = false;
+                console.error(error)
 
                 if (error.error && error.error.errors) {
                     if (error.error.errors.email) {

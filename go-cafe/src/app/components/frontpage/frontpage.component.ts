@@ -57,7 +57,6 @@ export class FrontpageComponent {
           this.router.navigate(['/login']);
         } else if (error.status === 500) {
           console.error("Server error:", error.message);
-          // Optional: Show a user-friendly message or retry option
         }
       }
     );
