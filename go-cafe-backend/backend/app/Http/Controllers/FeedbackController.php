@@ -94,7 +94,6 @@ public function sendEmail(Request $request)
 
     $user = Auth::user();
     
-    
     if ($user->tokenCan('send-email')) {
         if (!empty($request->email_body)) {
             Mail::to($request->email)->send(new CustomEmail($request->email_body));

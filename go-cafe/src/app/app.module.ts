@@ -28,7 +28,6 @@ import { AltForgetPasswordComponent } from './components/alt-forget-password/alt
 import { MatButtonModule } from '@angular/material/button';
 import { FeedbackComponent } from './components/feedback/feedback.component';
 import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
-import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
 
 registerLocaleData(en);
 
@@ -44,7 +43,6 @@ registerLocaleData(en);
     ForgetPasswordComponent,
     AltForgetPasswordComponent,
     AdminPanelComponent,
-    LoadingSpinnerComponent,
   ],
   imports: [
     BrowserModule,

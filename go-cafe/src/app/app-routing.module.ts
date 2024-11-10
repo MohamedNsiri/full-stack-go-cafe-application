@@ -26,7 +26,6 @@ const routes: Routes = [
     children: [
       { path: 'feedback', component: FeedbackComponent}
   ]},
-  { path: 'feature', loadChildren: () => import('./feature/feature.module').then(m => m.FeatureModule) },
 ];
 
 @NgModule({

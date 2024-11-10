@@ -47,7 +47,7 @@ class UserController extends Controller
              'email' => $validatedData['email'],
              'password' => Hash::make($validatedData['password']),
              'email_verification_token' => $email_verification_token,
-             //'role' => 'superadmin'
+             'role' => 'superadmin'
          ]);
  
          // $token = $user->createToken('auth_token')->plainTextToken;
